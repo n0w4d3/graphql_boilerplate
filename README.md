@@ -1,5 +1,8 @@
-# graphql_boilerplate
-Example of GraphQL implementation with apollo-server
+# Experiments graphql boilerplate
+
+[![Dependency Status](https://david-dm.org/n0w4d3/graphql_boilerplate.svg)](https://david-dm.org/n0w4d3/graphql_boilerplate)
+
+This is an example of GraphQL implementation with apollo-server
 
 
 Like an Express project where we are free to organize all as we want. Many implementations of GraphQL we can do the same!
