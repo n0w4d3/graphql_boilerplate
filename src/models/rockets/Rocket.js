@@ -12,5 +12,9 @@ module.exports = {
       rockets: [Rocket!]
     }
   `,
-  resolvers: {}
+  resolvers: {
+    Query: {
+      rockets: (_root, _args, { dataSources }) => dataSources.SpaceX.rockets()
+    }
+  }
 }

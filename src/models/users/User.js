@@ -1,3 +1,5 @@
+const conn = require('./UserConnector')
+
 module.exports = {
   typeDefs: `
     type User {
@@ -21,5 +23,12 @@ module.exports = {
       addUser(input: UserMutationInput!):User!
     }
   `,
-  resolvers: {}
+  resolvers: {
+    Mutation:{
+      addUser: (__,{ input }) => conn.addUser(input) 
+    },
+    Query: {
+      users: () => conn.allUsers(),
+    }
+  }
 }

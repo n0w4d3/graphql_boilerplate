@@ -1,20 +1,20 @@
-const { gql } = require('apollo-server')
-const mutation = require('./mutations/Mutation')
-const query = require('./queries/Query')
+const { mergeResolvers, mergeTypeDefs } = require('@graphql-tools/merge')
+
 const user = require('./users/User')
 const rocket = require('./rockets/Rocket')
 
-module.exports = {
-  typeDefs: gql`
-    ${query.typeDefs}
-    ${mutation.typeDefs}
-    ${user.typeDefs}
-    ${rocket.typeDefs}
-  `,
-  resolvers: {
-    ...query.resolvers,
-    ...mutation.resolvers,
-    ...user.resolvers,
-    ...rocket.resolvers,
-  }
-}
+const typeDefs = mergeTypeDefs([
+  `type Query`,
+  `type Mutation`,
+  user.typeDefs,
+  rocket.typeDefs
+])
+
+const resolvers = mergeResolvers([
+  user.resolvers,
+  rocket.resolvers,
+])
+
+
+module.exports = { typeDefs, resolvers }
+
