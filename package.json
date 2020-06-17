@@ -18,8 +18,5 @@
     "graphql-tools": "^6.0.10",
     "pm2": "^4.4.0",
     "uuid": "^8.1.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
   }
 }
