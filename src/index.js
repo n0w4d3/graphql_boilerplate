@@ -1,9 +1,18 @@
 const { ApolloServer } = require('apollo-server') 
-const { typeDefs, resolvers } = require('./models')
+const DB = require('./datasource/json')
+const { schema } = require('./models')
 const { SpaceX } = require('./datasource/rest')
 
+
+
 const server = new ApolloServer({ 
-  typeDefs, resolvers,
+  schema,
+  context: request => {
+    return {
+      ...request,
+      DB
+    }
+  },
   dataSources: () => {
     return {
       SpaceX: new SpaceX()

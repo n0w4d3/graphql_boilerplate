@@ -1,20 +1,23 @@
-const { mergeResolvers, mergeTypeDefs } = require('@graphql-tools/merge')
+const { makeExecutableSchema } = require('graphql-tools')
 
 const user = require('./users/User')
 const rocket = require('./rockets/Rocket')
 
-const typeDefs = mergeTypeDefs([
+const typeDefs = [
   `type Query`,
   `type Mutation`,
   user.typeDefs,
   rocket.typeDefs
-])
+]
 
-const resolvers = mergeResolvers([
+const resolvers = [
   user.resolvers,
   rocket.resolvers,
-])
+]
 
+const schema = makeExecutableSchema({
+  typeDefs, resolvers
+})
 
-module.exports = { typeDefs, resolvers }
+module.exports = { schema }
 

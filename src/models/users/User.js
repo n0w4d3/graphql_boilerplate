@@ -25,10 +25,10 @@ module.exports = {
   `,
   resolvers: {
     Mutation:{
-      addUser: (__,{ input }) => conn.addUser(input) 
+      addUser: (parent, { input }, context) => conn.addUser(input, context) 
     },
     Query: {
-      users: () => conn.allUsers(),
+      users: (parent, args, context) => conn.allUsers(context),
     }
   }
 }
